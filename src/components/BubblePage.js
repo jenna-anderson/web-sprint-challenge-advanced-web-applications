@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import Bubbles from "./Bubbles";
 import ColorList from "./ColorList";
 
-import { editColorService, deleteColorService } from '../services/colorServices';
 import fetchColorService from '../services/fetchColorService';
 import axiosWithAuth from './../helpers/axiosWithAuth';
 
@@ -34,8 +33,6 @@ const BubblePage = () => {
         console.log(err)
     })
   };
-
-  console.log(colors)
 
   const deleteColor = (colorToDelete) => {
     axiosWithAuth()

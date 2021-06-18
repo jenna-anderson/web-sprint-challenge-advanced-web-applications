@@ -20,11 +20,11 @@ function App(props) {
       <div className="App">
         <header>
           Color Picker Sprint Challenge
-          <a data-testid="logoutButton" href="#" onClick={handleClick}>logout</a>
+          <a data-testid="logoutButton" href='#' onClick={handleClick}>logout</a>
         </header> 
 
         <Route exact path="/" component={Login} />
-        <PrivateRoute exact path="/bubble-page" component={BubblePage}></PrivateRoute>
+        <PrivateRoute exact path="/bubbles" component={BubblePage}></PrivateRoute>
       </div>
     </Router>
   );
