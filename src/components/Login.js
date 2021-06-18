@@ -29,7 +29,7 @@ const Login = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (formValues.username === "" || formValues.password === "") {
-      setError("Username or Password not valid");
+      setError("Username or Password not valid.");
     }
     else{setError("")}
 
@@ -40,7 +40,7 @@ const Login = () => {
     })
     .catch(err => {
       console.log(err);
-      setError("Password or Username not valid")
+      setError("Username or Password not valid.")
     })
   }
 
