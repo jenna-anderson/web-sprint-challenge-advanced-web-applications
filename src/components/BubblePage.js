@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Bubbles from "./Bubbles";
 import ColorList from "./ColorList";
 
-import { editColorService, deleteColorService } from '../services/colorServices';
+import { editColorService, deleteColorService } from '../services/fetchColorServices';
 import fetchColorService from '../services/fetchColorService';
 
 const BubblePage = () => {
