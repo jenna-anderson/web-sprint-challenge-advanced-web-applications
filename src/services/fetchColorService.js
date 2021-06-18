@@ -1,4 +1,5 @@
 import axiosWithAuth from '../helpers/axiosWithAuth';
+import axios from 'axios';
 
 const fetchColorService = (setColors) => {
         axiosWithAuth()
@@ -8,6 +9,7 @@ const fetchColorService = (setColors) => {
         })
         .catch(err => {
             console.log(err);
+            return err;
         }) 
 }
 
