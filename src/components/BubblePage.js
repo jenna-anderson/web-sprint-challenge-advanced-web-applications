@@ -5,6 +5,7 @@ import ColorList from "./ColorList";
 
 import { editColorService, deleteColorService } from '../services/colorServices';
 import fetchColorService from '../services/fetchColorService';
+import axiosWithAuth from './../helpers/axiosWithAuth';
 
 const BubblePage = () => {
   const [colors, setColors] = useState([]);
@@ -14,16 +15,44 @@ const BubblePage = () => {
     fetchColorService(setColors)
   }, [])
 
-  console.log(colors)
-
   const toggleEdit = (value) => {
     setEditing(value);
   };
 
   const saveEdit = (editColor) => {
+    console.log("editColor", editColor)
+    console.log("editColor.color", editColor.color)
+    axiosWithAuth()
+    .put(`/colors/${editColor.id}`, editColor)
+    .then(res => {
+        const editedColor = res.data
+        console.log(editedColor)
+        const newColorList = colors.filter(color => color.id != editColor.id);
+        setColors(newColorList);
+        console.log(colors)
+        setColors([
+          ...colors,
+          editedColor
+        ])
+    })
+    .catch(err => {
+        console.log(err)
+    })
   };
 
+  console.log(colors)
+
   const deleteColor = (colorToDelete) => {
+    axiosWithAuth()
+    .delete(`/colors/${colorToDelete.id}`)
+    .then(res => {
+        const deleteId = res.data;
+        const newColorList = colors.filter(color => color.id != deleteId);
+        setColors(newColorList);
+    })
+    .catch(err => {
+        console.log(err)
+    })
   };
 
   return (
