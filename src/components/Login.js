@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 const initialFormValues = {
@@ -14,6 +15,8 @@ const Login = () => {
 
   const [formValues, setFormValues] = useState(initialFormValues);
   const [error, setError] = useState(initialError);
+
+  const { push } = useHistory();
 
   const onChange = (e) => {
     e.preventDefault();
@@ -33,6 +36,7 @@ const Login = () => {
     axios.post('http://localhost:5000/api/login', formValues)
     .then(res=> {
       localStorage.setItem("token", res.data.payload);
+      push("/bubble-page")
     })
     .catch(err => {
       console.log(err);
