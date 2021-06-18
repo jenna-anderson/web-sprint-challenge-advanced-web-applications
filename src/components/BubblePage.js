@@ -20,20 +20,15 @@ const BubblePage = () => {
   };
 
   const saveEdit = (editColor) => {
-    console.log("editColor", editColor)
-    console.log("editColor.color", editColor.color)
     axiosWithAuth()
     .put(`/colors/${editColor.id}`, editColor)
     .then(res => {
         const editedColor = res.data
-        console.log(editedColor)
-        const newColorList = colors.filter(color => color.id != editColor.id);
-        setColors(newColorList);
-        console.log(colors)
-        setColors([
-          ...colors,
-          editedColor
-        ])
+        const colorsIndex = colors.findIndex(color => color.id === editColor.id)
+        const newArray = [...colors];
+        newArray[colorsIndex] = {...newArray[colorsIndex], color: editedColor.color, code: editedColor.code}
+        setColors(newArray)
+
     })
     .catch(err => {
         console.log(err)
