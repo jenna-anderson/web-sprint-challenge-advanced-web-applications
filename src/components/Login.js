@@ -56,7 +56,7 @@ const Login = () => {
               name="username"
               value={formValues.username}
               onChange={onChange}
-              data-testid="username"
+              id="username"
             />
           <label>Password:&nbsp;</label>
             <input 
@@ -64,7 +64,7 @@ const Login = () => {
               name="password"
               value={formValues.password}
               onChange={onChange}
-              data-testid="password"
+              id="password"
             />
             <button>Login</button>
         </form>
